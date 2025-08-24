@@ -6,7 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This repository contains a 3D multiplayer terrain viewer:
 
-**terrain-3d.html** - A modern Three.js implementation that generates procedural terrain using GPU-accelerated polygon rendering with full multiplayer support.
+**terrain-3d.html** - HTML frontend for the 3D terrain viewer interface and UI components
+**terrain-3d.js** - Main JavaScript implementation with Three.js rendering, multiplayer networking, and game logic
 
 ## Running the Application
 
@@ -24,7 +25,15 @@ The multiplayer version requires Node.js and includes WebSocket communication fo
 
 ## Architecture
 
-### terrain-3d.html (3D Multiplayer Terrain Viewer)
+### Client-Side Architecture
+
+#### terrain-3d.html
+- HTML structure with UI elements for game interface
+- Chat window, minimap, user list, and loading screen components
+- Texture preview canvas and connection status indicators
+- References external JavaScript files for modular code organization
+
+#### terrain-3d.js  
 - **Data Structure**: Individual Three.js Mesh objects for each terrain block
 - **Rendering**: GPU rasterization using WebGL through Three.js
 - **World Generation**: 128x128 block world with procedural heightmap using noise functions
@@ -42,7 +51,7 @@ The application uses mathematical functions to generate block textures:
 - Different algorithms per block type (grass, dirt, stone, tree trunk, leaves)
 
 ### Coordinate System
-- **terrain-3d.html**: 128×128 surface grid with Y-axis height variation of ±4 blocks
+- **3D World**: 128×128 surface grid with Y-axis height variation of ±4 blocks
 - Dynamic chunk-based loading system for performance optimization
 
 ### Rendering Pipeline
@@ -57,6 +66,7 @@ The application uses mathematical functions to generate block textures:
 - Debug features: press 'T' to view texture atlas, 'M' for minimap toggle, connection status indicator
 - Player height is set to 3 blocks above ground level
 - Comprehensive chat system with Enter/Esc controls
+- **Modular Architecture**: JavaScript code is separated into `terrain-3d.js` for maintainability
 
 ## Multiplayer Architecture
 
