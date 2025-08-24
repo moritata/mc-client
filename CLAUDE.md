@@ -4,21 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This repository contains two distinct 3D rendering demonstrations:
+This repository contains a 3D multiplayer terrain viewer:
 
-1. **chambered.js** - A classic software raycasting engine (similar to Wolfenstein 3D/Doom era) that renders a 3D voxel world using CPU-based pixel manipulation
-2. **terrain-3d.html** - A modern Three.js implementation that generates procedural terrain using GPU-accelerated polygon rendering
+**terrain-3d.html** - A modern Three.js implementation that generates procedural terrain using GPU-accelerated polygon rendering with full multiplayer support.
 
-## Running the Applications
+## Running the Application
 
-### Chambered.js Demo (Single Player)
-```bash
-# Serve the directory with any HTTP server
-python3 -m http.server 8000
-# Navigate to http://localhost:8000/index.html
-```
-
-### Three.js Terrain Demo (Multiplayer)
+### 3D Multiplayer Terrain Viewer
 ```bash
 # Install Node.js dependencies
 npm install
@@ -32,13 +24,7 @@ The multiplayer version requires Node.js and includes WebSocket communication fo
 
 ## Architecture
 
-### chambered.js (Classic Raycasting)
-- **Data Structure**: 3D voxel array `map[64*64*64]` storing block types
-- **Rendering**: Software raycasting - casts rays for each screen pixel to determine color
-- **Textures**: Procedural generation using mathematical functions for different block types
-- **Performance**: CPU-bound, resolution-dependent (424x240 canvas)
-
-### terrain-3d.html (Modern 3D + Multiplayer)
+### terrain-3d.html (3D Multiplayer Terrain Viewer)
 - **Data Structure**: Individual Three.js Mesh objects for each terrain block
 - **Rendering**: GPU rasterization using WebGL through Three.js
 - **World Generation**: 128x128 block world with procedural heightmap using noise functions
@@ -50,27 +36,27 @@ The multiplayer version requires Node.js and includes WebSocket communication fo
 ## Key Technical Concepts
 
 ### Procedural Texture Generation
-Both implementations use mathematical functions to generate block textures:
+The application uses mathematical functions to generate block textures:
 - Color base values with random brightness variations
 - Noise functions for texture detail
-- Different algorithms per block type (grass, dirt, stone, etc.)
+- Different algorithms per block type (grass, dirt, stone, tree trunk, leaves)
 
-### Coordinate Systems
-- **chambered.js**: 64x64x64 voxel grid with wraparound boundaries
-- **terrain-3d.html**: 256x256 surface grid with Y-axis height variation of ±4 blocks
+### Coordinate System
+- **terrain-3d.html**: 128×128 surface grid with Y-axis height variation of ±4 blocks
+- Dynamic chunk-based loading system for performance optimization
 
-### Rendering Pipeline Differences
-- **Raycasting**: For each pixel → cast ray → find intersection → sample texture → set pixel color
-- **Rasterization**: For each object → project to screen space → rasterize triangles → apply textures
+### Rendering Pipeline
+- **GPU Rasterization**: For each object → project to screen space → rasterize triangles → apply textures
+- WebGL-based rendering through Three.js framework
 
 ## Development Notes
 
-- Chambered.js is a standalone HTML file with embedded JavaScript
-- The terrain demo requires Node.js server for multiplayer functionality
+- The terrain viewer requires Node.js server for multiplayer functionality
 - WebSocket communication handles real-time player position synchronization
 - Includes performance optimizations: chunk-based loading, disabled shadows, optimized rendering
-- Debug features: press 'T' to view texture atlas, connection status indicator
-- Player height is set to 3 blocks above ground level in both implementations
+- Debug features: press 'T' to view texture atlas, 'M' for minimap toggle, connection status indicator
+- Player height is set to 3 blocks above ground level
+- Comprehensive chat system with Enter/Esc controls
 
 ## Multiplayer Architecture
 

@@ -1,6 +1,6 @@
 # 3D Multiplayer Terrain Viewer
 
-A real-time 3D multiplayer terrain exploration application built with Three.js and WebSocket technology. This project evolved from a simple 3D terrain viewer inspired by `chambered.js` into a fully-featured multiplayer world with advanced terrain generation, environmental features, and comprehensive multiplayer functionality.
+A real-time 3D multiplayer terrain exploration application built with Three.js and WebSocket technology. This project features advanced terrain generation, environmental systems, and comprehensive multiplayer functionality.
 
 ## Features
 
@@ -88,7 +88,7 @@ http://localhost:3000/terrain-3d.html
 
 This project underwent significant development iterations:
 
-1. **Phase 1 - Basic 3D Terrain**: Started with `chambered.js`-inspired procedural texture generation
+1. **Phase 1 - Basic 3D Terrain**: Started with procedural texture generation techniques
 2. **Phase 2 - Three.js Integration**: Migrated from CPU raycasting to GPU rasterization
 3. **Phase 3 - Multiplayer Foundation**: Added WebSocket server and basic player synchronization
 4. **Phase 4 - Terrain Constraints**: Implemented smooth terrain algorithms (±1 block height difference)
@@ -200,16 +200,13 @@ terrain-3d.html (71,726 bytes)
 ### Project Structure
 ```
 mc-client/                     # Root project directory
-├── README.md                  # Comprehensive project documentation (3,657 bytes)
+├── README.md                  # Comprehensive project documentation
 ├── package.json               # Node.js project configuration (337 bytes)
 ├── package-lock.json          # Exact dependency versions (43,026 bytes)
 ├── .gitignore                 # Git exclusion patterns (1,934 bytes)
 ├── CLAUDE.md                  # Development session documentation (3,664 bytes)
 ├── server.js                  # Main WebSocket server (16,765 bytes)
 ├── terrain-3d.html            # Primary 3D client application (71,726 bytes)
-├── index.html                 # Original chambered.js reference (553 bytes)
-├── js/
-│   └── chambered.js          # Original raycasting implementation (6,163 bytes)
 └── node_modules/             # NPM dependencies (excluded from git)
     ├── express@4.18.2
     └── ws@8.14.2
@@ -221,10 +218,6 @@ mc-client/                     # Root project directory
 - **server.js**: Complete multiplayer server with terrain generation, player management, and WebSocket communication
 - **terrain-3d.html**: Self-contained 3D client with all features integrated
 - **package.json**: Minimal dependencies (express, ws, nodemon for development)
-
-#### Reference Implementation
-- **js/chambered.js**: Original CPU-based raycasting 3D renderer that inspired the project
-- **index.html**: Simple HTML page to run the original chambered.js demo
 
 #### Documentation
 - **README.md**: This comprehensive documentation
@@ -293,9 +286,9 @@ mc-client/                     # Root project directory
 This project was developed through AI-assisted programming with Claude AI and demonstrates modern web technologies for 3D multiplayer applications. The codebase is available for educational and non-commercial use.
 
 ### Acknowledgments
-- Original inspiration from `chambered.js` by Markus Persson (Notch)
 - Three.js community for excellent 3D graphics framework
 - WebSocket protocol for enabling real-time multiplayer functionality
+- Modern web technologies that enable real-time 3D multiplayer experiences
 
 ---
 
